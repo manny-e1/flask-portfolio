@@ -1,0 +1,70 @@
+
+{% extends "admin/layout.html" %}
+{% block head %}
+    {{ super() }}
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    
+ {% endblock head %}
+
+{% block content%}
+<section>
+    <div class="row p-4">
+        <div class="col-lg-9 col-md-8 col-sm-7  ">
+            <div class=" "><h4 class="pl-3 pt-4 mb-1 " style="color: grey">Select User To View</h4></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-5">
+            <a class="btn btn-info ml-5 mt-4 mb-1" style="border-radius: 50px" href="{{url_for('admin.register')}}"><small>ADD USER</small><i class="fas fa-plus fa-lg pl-2"></i></a>
+        </div>
+    </div>
+    
+        
+    </div>
+</section>
+<div class="fluid-container px-5 py-3">
+    <table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th style="width: 10%">Username</th>
+            <th style="width: 20%">Email</th>
+            <th style="width: 20%">Picture</th>
+            <th style="width: 10%">IsAdmin</th>
+            <th style="width: 10%">IsFriend</th>
+            <th style="width: 10%">Confirmed</th>
+            {% if current_user.isAdmin %}
+            <th style="width: 10%">Edit</th>
+            <th style="width: 10%">Delete</th>
+            {% endif %}
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td><strong ></strong>{{user.username}}</strong></td>
+            <td>{{user.email}}</td>
+            <td><img class="rounded-circle" style="width: 30px;height:30px" 
+                src="{{user.image}}"></td>
+            <td>{% if user.isAdmin %}<i class="fas fa-check-circle fa-2x pl-3"></i>{% else %} <i class="fas fa-times fa-times fa-3x pl-3"></i>{% endif %}</td>
+            <td>{% if user.isFriend %}<i class="fas fa-check-circle fa-2x pl-3"></i>{% else %} <i class="fas fa-times fa-times fa-3x pl-3"></i>{% endif %}</td>
+            <td>{% if user.confirmed %}<i class="fas fa-check-circle fa-2x pl-3"></i>{% else %} <i class="fas fa-times fa-3x pl-3"></i>{% endif %}</td>
+            <td>{% if current_user.isAdmin %}<a href="{{url_for('admin.account', id=user.id)}}"><i class="fas fa-pencil-alt fa-2x pl-2" style="color: black"></a>{% endif %}</td>
+            <td>{% if current_user.isAdmin %}<a href="{{url_for('admin.delete_user', id=user.id)}}"><i class="fas fa-user-minus fa-2x pl-2" style="color: black"></a>{% endif %}</td>
+        </tr>
+
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+
+{% block script%}
+{{ super() }}
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>
+{% endblock %}
+

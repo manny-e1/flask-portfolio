@@ -1,0 +1,44 @@
+{% extends 'admin/layout.html' %}
+{% block head %}
+  {{super()}}
+     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='signin.css')}}">
+{% endblock head %}
+{% block content %}
+    <form class="form-signin text-center pt-5" method="POST">
+      {{ form.hidden_tag() }}
+      <img class="mb-4" src="https://cdn4.iconfinder.com/data/icons/project-management-5-3/65/210-512.png" alt="" width="100" height="100">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputUsername" class="sr-only">Username</label>
+      {% if form.username.errors %}
+          {{ form.username(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.username(class="form-control form-control-lg",id="inputUsername",placeholder="Username") }}
+      {% endif %}
+      <label for="inputPassword" class="sr-only">Password</label>
+      {% if form.password.errors %}
+          {{ form.password(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+          {{ form.password(class="form-control form-control-lg",id="inputPassword",  placeholder="Password") }}
+      {% endif %}
+      <div class="checkbox mb-3">
+        <label>
+          {{ form.remember_me(class="form-check-input") }}
+          {{ form.remember_me.label(class="form-check-label") }}
+        </label>
+      </div>
+      {{ form.submit(class="btn btn-lg btn-primary btn-block") }}      
+    </form>
+{% endblock content %}  
+      
+      
+      

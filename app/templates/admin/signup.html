@@ -1,0 +1,73 @@
+{% extends 'admin/layout.html' %}
+{% block head %}
+  {{super()}}
+     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='signin.css')}}">
+{% endblock head %}
+{% block content %}
+    <form class="form-signin text-center pt-5" method="POST">
+      {{ form.hidden_tag() }}
+      <img class="mb-4" src="https://image.flaticon.com/icons/svg/2037/2037710.svg" alt="" width="100" height="100">
+      <h1 class="h3 mb-3 font-weight-normal">Sign Up </h1>
+      <label for="inputUsername" class="sr-only">Username</label>
+      {% if form.username.errors %}
+          {{ form.username(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.username(class="form-control form-control-lg",id="inputUsername",placeholder="Username") }}
+      {% endif %}
+      <label for="inputemail" class="sr-only">email</label>
+      {% if form.email.errors %}
+          {{ form.email(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.email.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.email(class="form-control form-control-lg",id="inputemail",placeholder="Email") }}
+      {% endif %}
+      <label for="inputpassword" class="sr-only">Password</label>
+      {% if form.password.errors %}
+          {{ form.password(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.password(class="form-control form-control-lg",id="inputpassword",placeholder="Password") }}
+      {% endif %}
+      <label for="inputconfirm_password" class="sr-only">Confirm Password</label>
+      {% if form.confirm_password.errors %}
+          {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.confirm_password.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.confirm_password(class="form-control form-control-lg",id="inputconfirm_password",placeholder="Confirm Password") }}
+      {% endif %}
+      <div class="form-group">
+        <div class="form-check">
+             <label for="isAdmin" class="form-check-label">IsAdmin</label>
+              {{ form.isAdmin(class="form-control form-control-lg",id="isAdmin") }}
+        </div>
+        <div class="form-check">
+          <label for="isFriend" class="form-check-label">IsFriend</label>
+          {{ form.isFriend(class="form-control form-control-lg",id="isFriend") }}
+        </div>
+        <div class="form-check">
+          <label for="confirmed" class="form-check-label">Confirm Email</label>
+          {{ form.confirmed(class="form-control form-control-lg",id="confirmed") }}
+        </div>
+      </div>
+      
+      
+      {{ form.submit(class="btn btn-lg btn-primary btn-block") }}      
+    </form>
+{% endblock content %}  

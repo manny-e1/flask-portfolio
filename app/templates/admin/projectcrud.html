@@ -1,0 +1,84 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+	<div class="pl-4 "><h4 class="pl-3 pt-4 mb-1 " style="color: grey">Change Project</h4></div>
+	
+	<form method="POST" class="pt-4 px-4" action="" enctype="multipart/form-data">
+	  <div class="form-group row ">
+	  	{{ form.csrf_token }}
+	    <label for="colFormLabelSm" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>Title:</b></label>
+	    <div class="col-sm-10">
+	    {% if form.title.errors %}
+          {{ form.title(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.title.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      	{% else %}
+	      {{ form.title(class="form-control form-control-sm",style="width:20rem", id=colFormLabelSm) }}
+	    {% endif %}
+	    </div>
+  	</div>
+  	<hr>
+  	<div class="form-group row">
+	    <label for="colFormLabelSm1" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>Descripiton:</b></label>
+	    <div class="col-sm-10">
+	    {% if form.description.errors %}
+          {{ form.description(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.description.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      	{% else %}
+	      {{ form.description(class="form-control form-control-sm",style="width:20rem", id=colFormLabelSm1) }}
+	    {% endif %}
+	    </div>
+  	</div>
+  	<hr>
+  	<div class="form-group row">
+	    <label for="colFormLabelSm2" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>Image:</b></label>
+	    <div class="col-sm-10">
+	    {% if form.picture.errors %}
+          {{ form.picture(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.picture.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      	{% else %}
+	      {{ form.picture(id=colFormLabelSm2) }}
+	    {% endif %}
+	    </div>
+  	</div>
+  	<hr>
+  	<div class="form-group row">
+	    <label for="colFormLabelSm3" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>Link:</b></label>
+	    <div class="col-sm-10">
+	    {% if form.link.errors %}
+          {{ form.link(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.link.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      	{% else %}
+	      {{ form.link(class="form-control form-control-sm",style="width:20rem", id=colFormLabelSm3) }}
+	    {% endif %}
+	    </div>
+  	</div>
+  	<div class="row ml-5 mt-5 pl-5 ">
+  		<div class="col-3">
+  			{{ form.submit(class="btn btn-primary",style="width:5rem", id=colFormLabelSm) }}
+  		</div>
+  		{% if title == "update project" %}
+  		<div class="col-3">
+  			<a class="btn btn-danger" href="{{url_for('admin.project', project_id=project.id)}}">Delete</a>
+  		</div>
+  		{%endif%}
+
+  	</div> 	
+
+</form>
+{% endblock content %}

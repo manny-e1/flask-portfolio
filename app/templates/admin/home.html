@@ -1,0 +1,62 @@
+{% extends "admin/layout.html" %}
+{% block head %}
+{{super()}}
+<style type="text/css">
+	a:hover{
+		color: #2faaa9;
+		text-decoration: none;
+	}
+</style>
+{%endblock%}
+{% block content %}
+<div class="pl-4 "><h4 class="pl-3 pt-4 mb-1 " style="color: grey">Site Adminstration</h4></div>
+	
+	<div class="row pl-4">
+		<div class="col-lg-6 col-md-8 col-sm-8" >
+				<div class="row pl-4 py-4">
+					<div class="col-lg-12 " style="background: #2B6999">
+						<h6 class="text-white pt-2">AUTHENTICATION AND AUTHORIZATION</h6>
+						<div class="row">
+							<div class="col-10 bg-light pt-2"><a href="{{url_for('admin.users')}}"><p>User</p></a></div>
+							<div class="col-2 bg-light pt-2" style="border-left: 2px solid white"><a href="{{url_for('admin.register')}}"><i class="fas fa-plus fa-lg pr-2"></i>Add</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="row pl-4 py-4">
+					<div class="col-lg-12" style="background: #2B6999">
+						<h6 class="text-white pt-2">POST</h6>
+						<div class="row">
+							<div class="col-10 bg-light pt-2"><a href="{{url_for('admin.blogs')}}"><p>Blog</p></a></div>
+							<div class="col-2 bg-light pt-2" style="border-left: 2px solid white"><a href="{{url_for('admin.new_blog')}}" ><i class="fas fa-plus fa-lg pr-2"></i>Add</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="row pl-4 py-4">
+					<div class="col-lg-12" style="background: #2B6999">
+						<h6 class="text-white pt-2">PORTFOLIO</h6>
+						<div class="row">
+							<div class="col-10 bg-light pt-2"><a href="{{url_for('admin.projects')}}"><p>Projects</p></a></div>
+							<div class="col-2 bg-light pt-2" style="border-left: 2px solid white"><a href="{{url_for('admin.new_project')}}"><i class="fas fa-plus fa-lg pr-2"></i>Add</a></div>
+						</div>
+						<div class="row">
+							<div class="col-10 bg-light pt-2"><a href="{{url_for('admin.resumes')}}"><p>Resume </p></a></div>
+							<div class="col-2 bg-light pt-2" style="border-left: 2px solid white"><a href="{{url_for('admin.new_resume')}}"><i class="fas fa-pencil-alt fa-lg pr-2"></i>Edit</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="row pl-4 py-4">
+					<div class="col-lg-12" style="background: #2B6999">
+						<h6 class="text-white pt-2">Homepage</h6>
+						<div class="row">
+							<div class="col-10 bg-light pt-2"><a href="{{url_for('admin.for_homepage')}}"><p>Homepage</p></a></div>
+							<div class="col-2 bg-light pt-2" style="border-left: 2px solid white"><a href="{{url_for('admin.for_homepage')}}"><i class="fas fa-plus fa-lg pr-2"></i>Edit</a></div>
+						</div>
+					</div>
+				</div>
+
+			
+		</div>
+
+			
+	</div>
+{% endblock content %}

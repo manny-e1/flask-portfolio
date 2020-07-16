@@ -1,0 +1,37 @@
+{% extends "visitor/layout.html" %}
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+<style>
+    .btn{
+        border: none;
+        background-color: inherit;
+        padding: 14px 28px;
+        font-size: 2px;
+        cursor: pointer;
+        display: inline-block;
+    }
+</style>
+{% endblock %}
+   
+{% block content %}
+    <div class="container mt-5">
+        <form method="post">
+            <button class="btn" type="submit">Download</button>
+        </form>
+        <div class="row">
+            <div class="col">
+                <div class="article-content">{{ content|safe }}</div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "visitor/layout.html" %}
+{% block head %}
+    {{super()}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+<style>
+    .card-body{
+        box-shadow: 0 0 20px 7px rgba(0,0 green,0 blue,0.1 alpha);
+    }
+    .card-body{
+        color: #12515a;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: auto;
+        font-weight: 600;
+    }
+    .card-text{
+        color: #0c7f90;
+    }
+    .card-body a:hover{
+        color: #63a6b0;
+        text-decoration: none;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+{% include 'visitor/nav.html' %}
+<header class="text-white text-center pt-5 pd-5" style="background: #008080">
+    <div class="container d-flex align-items-center flex-column ">
+        <img class="masthead-avatar mb-3 rounded-circle mt-2" src="{{image}}" alt="" style="width: 20rem">
+        <h1 class="masthead-heading ">{{name}}</h1>
+        <p class="pre-wrap masthead-subheading font-weight-light mb-5">{{stack}}</p>
+    </div>
+</header>
+<section class="page-section portfolio" id="portfolio">
+    <div class="container mb-5">
+        <div class="text-center mt-3 mb-1" >
+            <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Some Of The Projects I've Done</h2>
+        </div>
+        <div class="text-center">
+           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="row justify-content-center mt-5">
+
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="card text-center">
+                    <img src="{{project.image}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{project.title}}</h5>
+                        <p class="card-text">{{project.description}}</p>
+                        <a href="{{project.link}}">LINK</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+    </div>
+</section>
+<section class="page-section" id="contact" style="background: #0080aa">
+    <div class="container">
+        <div class="text-center pt-4">
+            <h2 class="page-section-heading  d-inline-block mb-0">CONTACT</h2>
+        </div>
+        <div class="text-center">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="row justify-content-center pt-5 pb-5">
+            <div class="col-lg-4">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="icon-contact mb-3 pb-3 pt-3 pl-4 pr-4 bg-dark" style="border-radius: 50%">
+                        <i class="fas fa-mobile-alt fa-2x" style="color:white"></i></div>
+                    <div class="text-white">Phone</div>
+                    <div class="lead font-weight-bold text-white	">{{phone}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="d-flex flex-column align-items-center">
+                   <div class="icon-contact mb-3 p-3 bg-dark" style="border-radius: 50%">
+                       <i class="far fa-envelope fa-2x" style="color:white"></i></div>
+                    <div class="text-white">Email</div><a class="lead font-weight-bold text-white"  href="{{email}}">{{email}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="footer text-center bg-dark">
+    <section class="copyright py-4 text-white text-center">
+        <div class="container"><small class="pre-wrap">Developed By Amanuel Ewnetu</small></div>
+    </section>
+</footer>
+{% endblock content %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+{% endblock %}

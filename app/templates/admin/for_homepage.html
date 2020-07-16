@@ -1,0 +1,79 @@
+{% extends 'admin/layout.html' %}
+{% block head %}
+  {{super()}}
+     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='signin.css')}}">
+{% endblock head %}
+{% block content %}
+<form method="POST" class="form-signin text-center pt-5" action="" enctype="multipart/form-data">
+        {% if homepage.picture %}
+            <img class="mb-4  rounded-circle" src="{{homepage.picture}}" alt="" width="100" height="100">
+        {% else %}
+        <img class="mb-4  rounded-circle" src="{{url_for('static', filename='uploads/default.jpg')}}" alt="" width="100" height="100">
+        {% endif %}
+     
+      <div class="form-group row">
+        {{ form.hidden_tag() }}
+	    <label for="colFormLabelSm2" class="sr-only">Image</label>
+	    <div class="col-sm-10">
+	    {% if form.picture.errors %}
+          {{ form.picture(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.picture.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      	{% else %}
+	      {{ form.picture(id=colFormLabelSm2) }}
+	    {% endif %}
+	    </div>
+  	</div>
+      <label for="name" class="sr-only">name</label>
+      {% if form.name.errors %}
+          {{ form.name(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.name.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.name(class="form-control form-control-lg",id="name",placeholder="name") }}
+      {% endif %}
+      <label for="stack" class="sr-only">stack</label>
+      {% if form.stack.errors %}
+          {{ form.stack(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.stack.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.stack(class="form-control form-control-lg",id="stack",placeholder="stack") }}
+      {% endif %}
+      <label for="email" class="sr-only">email</label>
+      {% if form.email.errors %}
+          {{ form.email(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.stack.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.email(class="form-control form-control-lg",id="email",placeholder="email") }}
+      {% endif %}
+      <label for="phone" class="sr-only">stack</label>
+      {% if form.phone.errors %}
+          {{ form.phone(class="form-control form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+              {% for error in form.phone.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      {% else %}
+        {{ form.phone(class="form-control form-control-lg",id="phone",placeholder="phone") }}
+      {% endif %}
+      <div class="form-group mt-3">
+        {{ form.submit(class="btn btn-lg btn-primary btn-block") }}    
+      </div>
+       
+    </form>
+{% endblock content %}  

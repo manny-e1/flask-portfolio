@@ -1,0 +1,8 @@
+debug.log
+__pycache__
+env/
+migrations/
+.env
+app/**/*.env
+app/config.py
+config.py

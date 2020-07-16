@@ -1,0 +1,48 @@
+{% extends "admin/layout.html" %}
+{% block head %}
+    {{ super() }}
+    
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+{% endblock head %}
+
+
+{% block content %}
+	<div class="pl-4 "><h4 class="pl-3 pt-4 mb-1 " style="color: grey">{{title}}</h4></div>
+	
+	<form method="POST" class="pt-4 px-4" action="" enctype="multipart/form-data">
+	  <div class="form-group row ">
+	  	{{ form.csrf_token }}
+      <label for="name" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>name:</b></label>
+      <div class="col-sm-10">
+        {{ form.name(class="form-control form-control-sm", id="name") }}
+      </div>
+	    <label for="summernote" class="col-sm-2  col-form-label col-form-label-sm pl-4"><b>Content:</b></label>
+	    <div class="col-sm-10">
+	      {{ form.content(class="form-control form-control-sm", id="summernote") }}
+	    </div>
+  	</div>
+  	<hr>
+  	<div class="row ml-5 mt-5 pl-5 ">
+  		<div class="col-3">
+  			{{ form.submit(class="btn btn-primary",style="width:5rem", id="colFormLabelSm") }}
+  		</div>
+      {% if current_user.isAdmin and title == "Update Resume" %}
+      <div class="col-3">
+        <a class="btn btn-success" href="{{url_for('admin.active_resume', resume_id=resume.id)}}">Active</a>
+      </div>
+      {% endif %}
+  	</div> 	
+
+</form>
+{% endblock content %}
+
+{% block script %}
+	{{ super() }}
+
+    <script>
+        $('#summernote').summernote({
+        height: 200
+      });
+    </script>
+{% endblock script %}
